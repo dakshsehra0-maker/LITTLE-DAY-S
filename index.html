@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Little Days • A Gentle Productivity Space</title>
+  
+  <!-- Favicon / Cute Icon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☁️</text></svg>">
+
+  <!-- Google Fonts: Quicksand for soft titles, Plus Jakarta Sans for clean body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Ambient Glows -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar-wrapper">
+    <nav class="navbar" id="mainNavbar">
+      <a href="#about" class="nav-brand">
+        <div class="brand-icon-box">
+          <i data-lucide="cloud-sun" class="brand-icon"></i>
+        </div>
+        <div class="brand-text-group">
+          <span class="brand-name">Little Days</span>
+          <span class="brand-sub">calm daily space</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-link active" data-nav="about">About</a></li>
+        <li><a href="#projects" class="nav-link" data-nav="projects">Projects</a></li>
+        <li><a href="#contact" class="nav-link" data-nav="contact">Contact</a></li>
+      </ul>
+
+      <!-- Right Nav Status & Actions -->
+      <div class="nav-right">
+        <div class="time-pill" id="liveTimeWidget" title="Current time">
+          <i data-lucide="clock" class="time-icon"></i>
+          <span id="currentTimeText">Loading time...</span>
+        </div>
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation Menu">
+          <i data-lucide="menu" id="menuIcon"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#about" class="mobile-link" data-nav="about">
+        <i data-lucide="sparkles"></i> About
+      </a>
+      <a href="#projects" class="mobile-link" data-nav="projects">
+        <i data-lucide="layout-grid"></i> Projects (Tasks & Journal)
+      </a>
+      <a href="#contact" class="mobile-link" data-nav="contact">
+        <i data-lucide="mail"></i> Contact
+      </a>
+    </div>
+  </header>
+
+  <main class="main-content">
+
+    <!-- ==================== SECTION 1: ABOUT ==================== -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        
+        <!-- Hero Banner -->
+        <div class="hero-card">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span>Your serene digital corner</span>
+          </div>
+          <h1 class="hero-title">Slow down. Breathe.<br>Cherish your <span class="highlight-text">little days</span>.</h1>
+          <p class="hero-description">
+            Welcome to <strong>Little Days</strong>, a gentle sanctuary created to help you organise daily tasks, pen your thoughts, and celebrate quiet, everyday moments without pressure, clutter, or noise.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">
+              <i data-lucide="pen-tool"></i> Open Daily Spaces
+            </a>
+            <button class="btn btn-secondary" id="randomQuoteBtn">
+              <i data-lucide="smile"></i> Daily Reminder
+            </button>
+          </div>
+
+          <!-- Mindful Quote Banner -->
+          <div class="mindful-quote-box" id="quoteContainer">
+            <i data-lucide="quote" class="quote-icon"></i>
+            <p class="quote-text" id="quoteText">"You don't have to finish everything today. Just take one mindful step at a time."</p>
+          </div>
+        </div>
+
+        <!-- Three Gentle Pillars Cards -->
+        <div class="about-grid">
+          <div class="about-card">
+            <div class="about-icon-circle blue">
+              <i data-lucide="check-circle-2"></i>
+            </div>
+            <h3>Gentle To-Dos</h3>
+            <p>Write down your intentions with ease. Mark off small wins and keep your head clear without stressful deadlines or alerts.</p>
+          </div>
+
+          <div class="about-card">
+            <div class="about-icon-circle grey">
+              <i data-lucide="book-heart"></i>
+            </div>
+            <h3>Daily Journaling</h3>
+            <p>Capture reflections, gratitude, and fleeting feelings. Log how your day felt alongside your personal stories.</p>
+          </div>
+
+          <div class="about-card">
+            <div class="about-icon-circle soft">
+              <i data-lucide="shield-check"></i>
+            </div>
+            <h3>Private & Local</h3>
+            <p>Your notes and tasks are saved directly in your browser’s local storage. No logins, no trackers, completely free and safe.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 2: PROJECTS (INTERACTIVE FEATURES) ==================== -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-tag">Interactive Features</span>
+          <h2 class="section-title">Your Everyday Projects</h2>
+          <p class="section-subtitle">A balanced workspace featuring your personal to-do list and daily journal.</p>
+
+          <!-- View Selector Tabs -->
+          <div class="view-switch-bar">
+            <button class="view-tab active" data-view="both">
+              <i data-lucide="columns-2"></i> Side-by-Side
+            </button>
+            <button class="view-tab" data-view="tasks">
+              <i data-lucide="check-square"></i> To-Do List Only
+            </button>
+            <button class="view-tab" data-view="journal">
+              <i data-lucide="book-open"></i> Daily Journal Only
+            </button>
+          </div>
+        </div>
+
+        <!-- Dual Interactive Workspace Grid -->
+        <div class="projects-grid" id="projectsContainer">
+          
+          <!-- FEATURE 1: TO-DO LIST -->
+          <div class="project-column" id="tasksColumn">
+            <div class="app-card task-app">
+              
+              <div class="card-header">
+                <div class="card-title-group">
+                  <div class="card-icon-pill">
+                    <i data-lucide="check-circle"></i>
+                  </div>
+                  <div>
+                    <h3 class="card-title">Daily To-Do List</h3>
+                    <p class="card-subtitle">Keep track of your small steps</p>
+                  </div>
+                </div>
+
+                <div class="stats-counter" id="taskStatsPill">
+                  <span id="completedCount">0</span>/<span id="totalCount">0</span> done
+                </div>
+              </div>
+
+              <!-- Progress Bar -->
+              <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="taskProgressBar" style="width: 0%"></div>
+              </div>
+
+              <!-- New Task Input Form -->
+              <form class="task-form" id="taskForm">
+                <div class="task-input-wrapper">
+                  <input 
+                    type="text" 
+                    id="taskInput" 
+                    class="clean-input" 
+                    placeholder="Add a gentle task (e.g., Water plants, Read 10 pages)..." 
+                    autocomplete="off"
+                    maxlength="100"
+                    required
+                  >
+                  <button type="submit" class="btn btn-add" id="addTaskBtn" title="Add task">
+                    <i data-lucide="plus"></i>
+                    <span>Add</span>
+                  </button>
+                </div>
+
+                <!-- Tag Category selector -->
+                <div class="tag-selector-row">
+                  <span class="tag-label">Category:</span>
+                  <div class="tag-chips">
+                    <label class="tag-chip active">
+                      <input type="radio" name="taskTag" value="🌸 Personal" checked>
+                      <span>🌸 Personal</span>
+                    </label>
+                    <label class="tag-chip">
+                      <input type="radio" name="taskTag" value="🌿 Focus">
+                      <span>🌿 Focus</span>
+                    </label>
+                    <label class="tag-chip">
+                      <input type="radio" name="taskTag" value="☕ Routine">
+                      <span>☕ Routine</span>
+                    </label>
+                    <label class="tag-chip">
+                      <input type="radio" name="taskTag" value="✨ Little Win">
+                      <span>✨ Little Win</span>
+                    </label>
+                  </div>
+                </div>
+              </form>
+
+              <!-- Task Filters & Clear -->
+              <div class="tasks-toolbar">
+                <div class="filter-pills">
+                  <button class="filter-pill active" data-filter="all">All</button>
+                  <button class="filter-pill" data-filter="active">Active</button>
+                  <button class="filter-pill" data-filter="completed">Done</button>
+                </div>
+                <button class="text-btn" id="clearCompletedBtn" title="Remove all completed tasks">
+                  <i data-lucide="trash-2"></i> Clear done
+                </button>
+              </div>
+
+              <!-- Task Items List -->
+              <ul class="task-list" id="taskList">
+                <!-- Dynamically populated from JS / localStorage -->
+              </ul>
+
+              <!-- Empty State for Tasks -->
+              <div class="empty-state" id="tasksEmptyState" style="display: none;">
+                <div class="empty-icon-circle">
+                  <i data-lucide="sun-medium"></i>
+                </div>
+                <h4>All clear & peaceful</h4>
+                <p>No tasks here. Add something when you're ready, or simply relax.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- FEATURE 2: DAILY JOURNAL -->
+          <div class="project-column" id="journalColumn">
+            <div class="app-card journal-app">
+              
+              <div class="card-header">
+                <div class="card-title-group">
+                  <div class="card-icon-pill">
+                    <i data-lucide="feather"></i>
+                  </div>
+                  <div>
+                    <h3 class="card-title">Daily Journal</h3>
+                    <p class="card-subtitle">Reflect, pause and remember</p>
+                  </div>
+                </div>
+
+                <div class="journal-count-badge">
+                  <i data-lucide="book-marked"></i>
+                  <span id="journalEntriesCount">0</span> entries
+                </div>
+              </div>
+
+              <!-- Journal Creator Form -->
+              <div class="journal-creator">
+                <form id="journalForm">
+                  
+                  <!-- Date & Mood row -->
+                  <div class="journal-meta-row">
+                    <div class="date-picker-group">
+                      <label for="journalDate" class="input-label">Date:</label>
+                      <div class="date-input-wrap">
+                        <i data-lucide="calendar" class="calendar-icon"></i>
+                        <input type="date" id="journalDate" class="clean-input date-input" required>
+                      </div>
+                    </div>
+
+                    <div class="mood-picker-group">
+                      <label class="input-label">Today's Mood:</label>
+                      <div class="mood-selector" id="moodSelector">
+                        <button type="button" class="mood-btn active" data-mood="🌿 Peaceful" title="Peaceful">🌿</button>
+                        <button type="button" class="mood-btn" data-mood="🌸 Happy" title="Happy">🌸</button>
+                        <button type="button" class="mood-btn" data-mood="☕ Cozy" title="Cozy">☕</button>
+                        <button type="button" class="mood-btn" data-mood="☁️ Thoughtful" title="Thoughtful">☁️</button>
+                        <button type="button" class="mood-btn" data-mood="🌙 Restful" title="Restful">🌙</button>
+                      </div>
+                      <input type="hidden" id="selectedMood" value="🌿 Peaceful">
+                    </div>
+                  </div>
+
+                  <!-- Entry Title -->
+                  <div class="journal-input-group">
+                    <input 
+                      type="text" 
+                      id="journalTitle" 
+                      class="clean-input title-input" 
+                      placeholder="Title: e.g. A warm morning cup of tea..." 
+                      maxlength="120"
+                      required
+                    >
+                  </div>
+
+                  <!-- Entry Body -->
+                  <div class="journal-input-group">
+                    <textarea 
+                      id="journalContent" 
+                      class="clean-textarea" 
+                      rows="4" 
+                      placeholder="Write your thoughts, little highlights, or whatever is resting on your mind..."
+                      required
+                    ></textarea>
+                  </div>
+
+                  <!-- Journal Action Buttons -->
+                  <div class="journal-form-footer">
+                    <button type="button" class="text-btn prompt-btn" id="journalPromptBtn">
+                      <i data-lucide="lightbulb"></i> Prompt idea
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="saveJournalBtn">
+                      <i data-lucide="bookmark-plus"></i> Save Entry
+                    </button>
+                  </div>
+
+                </form>
+              </div>
+
+              <!-- Previous Entries Section -->
+              <div class="previous-entries-section">
+                <div class="entries-header">
+                  <h4>Previous Entries</h4>
+                  <div class="search-wrap">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input type="text" id="journalSearchInput" class="search-input" placeholder="Search entries...">
+                  </div>
+                </div>
+
+                <!-- Entries Card List -->
+                <div class="journal-entries-list" id="journalEntriesList">
+                  <!-- Dynamically populated from JS / localStorage -->
+                </div>
+
+                <!-- Empty State for Journal -->
+                <div class="empty-state" id="journalEmptyState" style="display: none;">
+                  <div class="empty-icon-circle">
+                    <i data-lucide="book-open"></i>
+                  </div>
+                  <h4>Your journal is waiting</h4>
+                  <p>Pen your first thought above to begin building your memory collection.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 3: CONTACT ==================== -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-tag">Get in Touch</span>
+          <h2 class="section-title">Say Hello</h2>
+          <p class="section-subtitle">We would love to hear how Little Days fits into your everyday routine.</p>
+        </div>
+
+        <div class="contact-grid">
+          
+          <!-- Contact Info & Socials Card -->
+          <div class="contact-card info-card">
+            <div class="info-badge">
+              <i data-lucide="heart"></i>
+              <span>Keep In Touch</span>
+            </div>
+            <h3>A gentle hello is always welcome</h3>
+            <p>Little Days is crafted to bring warmth and lightness to your screen. Whether you have an idea, gentle feedback, or just want to say hi, feel free to reach out.</p>
+
+            <div class="contact-methods">
+              <!-- Email Placeholder Card -->
+              <div class="contact-method-item">
+                <div class="method-icon">
+                  <i data-lucide="mail"></i>
+                </div>
+                <div class="method-details">
+                  <span class="method-label">Direct Email</span>
+                  <span class="method-value" id="displayEmail">hello@littledays.example</span>
+                </div>
+                <button class="btn btn-subtle-sm" id="copyEmailBtn" title="Copy email address">
+                  <i data-lucide="copy"></i>
+                  <span>Copy</span>
+                </button>
+              </div>
+
+              <!-- Hours / Response Note -->
+              <div class="contact-method-item">
+                <div class="method-icon">
+                  <i data-lucide="coffee"></i>
+                </div>
+                <div class="method-details">
+                  <span class="method-label">Pace</span>
+                  <span class="method-value">We reply thoughtfully within a couple of quiet days.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Media Link Placeholders -->
+            <div class="social-links-block">
+              <h4 class="social-title">Follow along on our quiet corners:</h4>
+              <div class="social-chips">
+                <a href="#contact" class="social-chip" title="Instagram (placeholder)">
+                  <i data-lucide="instagram"></i>
+                  <span>@littledays.space</span>
+                </a>
+                <a href="#contact" class="social-chip" title="Pinterest (placeholder)">
+                  <i data-lucide="pin"></i>
+                  <span>pinterest.com/littledays</span>
+                </a>
+                <a href="#contact" class="social-chip" title="Twitter / X (placeholder)">
+                  <i data-lucide="twitter"></i>
+                  <span>@littledays_app</span>
+                </a>
+                <a href="#contact" class="social-chip" title="Substack (placeholder)">
+                  <i data-lucide="newspaper"></i>
+                  <span>littledays.substack.com</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form (Interactive Mockup with friendly feedback) -->
+          <div class="contact-card form-card">
+            <h3 class="form-title">Send a gentle message</h3>
+            <p class="form-sub">Drop a thought in our little letterbox.</p>
+
+            <form id="contactForm" class="gentle-form">
+              <div class="form-group">
+                <label for="contactName">Your Name</label>
+                <div class="input-with-icon">
+                  <i data-lucide="user"></i>
+                  <input type="text" id="contactName" placeholder="e.g. Maya Lin" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contactEmail">Your Email</label>
+                <div class="input-with-icon">
+                  <i data-lucide="at-sign"></i>
+                  <input type="email" id="contactEmail" placeholder="e.g. maya@example.com" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contactSubject">Subject</label>
+                <div class="input-with-icon">
+                  <i data-lucide="message-square"></i>
+                  <input type="text" id="contactSubject" placeholder="e.g. A gentle suggestion..." required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contactMessage">Your Message</label>
+                <textarea id="contactMessage" rows="4" placeholder="Write your words here..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">
+                <i data-lucide="send"></i>
+                <span>Send Note</span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo">☁️ Little Days</span>
+        <p>A simple, quiet space for your daily rhythm.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#projects">To-Do & Journal</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-meta">
+        <p>Saved locally in your browser • No tracking • No sign-ups</p>
+        <p class="copyright">© 2026 Little Days. Crafted with calm intentions.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal: Read Full Journal Entry -->
+  <div class="modal-backdrop" id="entryModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-meta">
+          <span class="modal-date" id="modalEntryDate">Date</span>
+          <span class="modal-mood-pill" id="modalEntryMood">Mood</span>
+        </div>
+        <button class="modal-close" id="modalCloseBtn" aria-label="Close modal">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h2 class="modal-title" id="modalEntryTitle">Entry Title</h2>
+        <div class="modal-content-text" id="modalEntryContent">Entry content goes here...</div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="modalDeleteBtn">
+          <i data-lucide="trash-2"></i> Delete Entry
+        </button>
+        <button class="btn btn-primary" id="modalDoneBtn">
+          Done Reading
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-shelf" id="toastShelf"></div>
+
+  <!-- JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>
